@@ -22,13 +22,12 @@ import org.springframework.stereotype.Service;
  * @author admin
  */
 @Service
-public class ProductServiceImpl implements ProductService{
-    
+public class ProductServiceImpl implements ProductService {
+
     @Autowired
     private ProductRepository prodRepo;
-    
+
     private Cloudinary cloundinary;
-    
 
     @Override
     public List<Product> getProducts(Map<String, String> params) {
@@ -37,7 +36,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public void addOrUpdate(Product p) {
-        if (p.getFile().isEmpty()){
+        if (p.getFile().isEmpty()) {
             try {
                 Map res = this.cloundinary.uploader().upload(p.getFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
                 p.setImage(res.get("secure_url").toString());
@@ -52,5 +51,9 @@ public class ProductServiceImpl implements ProductService{
     public Product getProductById(int id) {
         return this.prodRepo.getProductById(id);
     }
-    
+
+    @Override
+    public void deleteProduct(int id) {
+        this.prodRepo.deleteProduct(id);
+    }
 }

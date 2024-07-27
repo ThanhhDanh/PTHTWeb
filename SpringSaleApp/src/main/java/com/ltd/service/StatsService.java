@@ -4,17 +4,13 @@
  */
 package com.ltd.service;
 
-import com.ltd.pojo.Product;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
  * @author admin
  */
-public interface ProductService {
-    List<Product> getProducts(Map<String, String> params);
-    void addOrUpdate(Product p);
-    Product getProductById(int id);
-    void deleteProduct(int id);
+public interface StatsService {
+    List<Object[]> statsRevenueByProduct();
+    List<Object[]> statsRevenueByPeroid(int year, String peroid);
 }

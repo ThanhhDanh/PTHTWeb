@@ -48,7 +48,8 @@
                     <td>${String.format("%,d", p.price)} VND</td>
                     <td>
                         <a href="#" class="btn btn-info">&#128394;</a>
-                        <button class="btn btn-danger">&times;</button>
+                        <c:url value="/api/products/${p.id}" var="endpoint" />
+                        <button onclick="deleteProduct('${endpoint}', ${p.id})" class="btn btn-danger">&times;</button>
                     </td>
                 </tr>
             </c:forEach>
